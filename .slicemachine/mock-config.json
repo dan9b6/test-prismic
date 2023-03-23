@@ -1,10 +1,17 @@
 {
   "_cts": {
     "homepage": {},
-    "page": {}
+    "page": {},
+    "projects": {}
   },
   "slices": {
     "HeroSlice": {},
-    "ImageGrid": {}
+    "ImageGrid": {},
+    "GridSlice": {
+      "default": {
+        "items": {},
+        "primary": {}
+      }
+    }
   }
 }

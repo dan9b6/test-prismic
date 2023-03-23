@@ -9,17 +9,28 @@ import RichText from "@/components/RichText";
  * @param { HeroSliceProps }
  */
 const HeroSlice = ({ slice }) => (
-  <section className="section">
+  <section className="hero section">
+    {slice.primary.background_image && (
+      <PrismicNextImage
+        field={slice.primary.background_image}
+        className="hero-bg"
+      />
+    )}
     <div className="container">
-      {/* <pre>{JSON.stringify(slice, null, 2)}</pre> */}
-      <RichText field={slice.primary.title} />
-      <RichText field={slice.primary.description} />
-      <PrismicNextImage field={slice.primary.image} />
-      {slice?.items?.map((item, i) => (
-        <PrismicLink field={item.cta_link} className="btn" key={i}>
-          {item.cta_text}
-        </PrismicLink>
-      ))}
+      <div className="grid grid--2">
+        <div className="grid-item">
+          <RichText field={slice.primary.title} />
+          <RichText field={slice.primary.description} />
+          {slice?.items?.map((item, i) => (
+            <PrismicLink field={item.cta_link} className="btn" key={i}>
+              {item.cta_text}
+            </PrismicLink>
+          ))}
+        </div>
+        <div className="grid-item">
+          <PrismicNextImage field={slice.primary.image} />
+        </div>
+      </div>
     </div>
   </section>
 );

@@ -29,6 +29,9 @@
             },
             "image_grid": {
               "type": "SharedSlice"
+            },
+            "grid_slice": {
+              "type": "SharedSlice"
             }
           }
         }

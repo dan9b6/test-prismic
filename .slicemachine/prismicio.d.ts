@@ -35,7 +35,7 @@ interface HomepageDocumentData {
  * Slice for *Homepage → Slice Zone*
  *
  */
-type HomepageDocumentDataSlicesSlice = HeroSliceSlice | ImageGridSlice;
+type HomepageDocumentDataSlicesSlice = HeroSliceSlice | ImageGridSlice | GridSliceSlice;
 /**
  * Homepage document from Prismic
  *
@@ -75,7 +75,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSliceSlice | ImageGridSlice;
+type PageDocumentDataSlicesSlice = HeroSliceSlice | ImageGridSlice | GridSliceSlice;
 /**
  * Page document from Prismic
  *
@@ -86,7 +86,163 @@ type PageDocumentDataSlicesSlice = HeroSliceSlice | ImageGridSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type PageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
-export type AllDocumentTypes = HomepageDocument | PageDocument;
+/** Content for Projects documents */
+interface ProjectsDocumentData {
+    /**
+     * Title field in *Projects*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: projects.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Slice Zone field in *Projects*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: projects.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<ProjectsDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Projects → Slice Zone*
+ *
+ */
+type ProjectsDocumentDataSlicesSlice = GridSliceSlice | HeroSliceSlice | ImageGridSlice;
+/**
+ * Projects document from Prismic
+ *
+ * - **API ID**: `projects`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ProjectsDocumentData>, "projects", Lang>;
+export type AllDocumentTypes = HomepageDocument | PageDocument | ProjectsDocument;
+/**
+ * Primary content in GridSlice → Primary
+ *
+ */
+interface GridSliceSliceDefaultPrimary {
+    /**
+     * Title field in *GridSlice → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: grid_slice.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *GridSlice → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: grid_slice.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Grid Type field in *GridSlice → Primary*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **API ID Path**: grid_slice.primary.grid_type
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    grid_type: prismicT.SelectField<"Card" | "Image Only" | "Icon">;
+    /**
+     * Grey Background field in *GridSlice → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: grid_slice.primary.grey_background
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    grey_background: prismicT.BooleanField;
+}
+/**
+ * Item in GridSlice → Items
+ *
+ */
+export interface GridSliceSliceDefaultItem {
+    /**
+     * Rich Text field in *GridSlice → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: grid_slice.items[].richtext
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    richtext: prismicT.RichTextField;
+    /**
+     * Image field in *GridSlice → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: grid_slice.items[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+    /**
+     * CTA Link field in *GridSlice → Items*
+     *
+     * - **Field Type**: Link to Media
+     * - **Placeholder**: *None*
+     * - **API ID Path**: grid_slice.items[].cta_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    cta_link: prismicT.LinkToMediaField;
+    /**
+     * CTA Text field in *GridSlice → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: grid_slice.items[].cta_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    cta_text: prismicT.KeyTextField;
+}
+/**
+ * Default variation for GridSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `GridSlice`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type GridSliceSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<GridSliceSliceDefaultPrimary>, Simplify<GridSliceSliceDefaultItem>>;
+/**
+ * Slice variation for *GridSlice*
+ *
+ */
+type GridSliceSliceVariation = GridSliceSliceDefault;
+/**
+ * GridSlice Shared Slice
+ *
+ * - **API ID**: `grid_slice`
+ * - **Description**: `GridSlice`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type GridSliceSlice = prismicT.SharedSlice<"grid_slice", GridSliceSliceVariation>;
 /**
  * Primary content in HeroSlice → Primary
  *
@@ -122,6 +278,16 @@ interface HeroSliceSliceDefaultPrimary {
      *
      */
     image: prismicT.ImageField<never>;
+    /**
+     * Background Image field in *HeroSlice → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_slice.primary.background_image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    background_image: prismicT.ImageField<never>;
 }
 /**
  * Item in HeroSlice → Items
@@ -242,6 +408,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, AllDocumentTypes, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefaultItem, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, ImageGridSliceDefaultPrimary, ImageGridSliceDefaultItem, ImageGridSliceDefault, ImageGridSliceVariation, ImageGridSlice };
+        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProjectsDocumentData, ProjectsDocumentDataSlicesSlice, ProjectsDocument, AllDocumentTypes, GridSliceSliceDefaultPrimary, GridSliceSliceDefaultItem, GridSliceSliceDefault, GridSliceSliceVariation, GridSliceSlice, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefaultItem, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, ImageGridSliceDefaultPrimary, ImageGridSliceDefaultItem, ImageGridSliceDefault, ImageGridSliceVariation, ImageGridSlice };
     }
 }
