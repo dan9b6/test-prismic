@@ -1,0 +1,36 @@
+.container {
+  padding: 0 1rem;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media (min-width: $sm) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: $md) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: $lg) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: $xl) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: $xxl) {
+  .container {
+    max-width: 1320px;
+  }
+}

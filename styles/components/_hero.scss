@@ -1,0 +1,26 @@
+.hero {
+  display: grid;
+  color: $c-white;
+  background-color: $c-black;
+
+  &-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (min-width: $md) {
+  .hero {
+    .grid {
+      gap: 2rem;
+
+      &-item {
+        align-self: center;
+      }
+    }
+  }
+}

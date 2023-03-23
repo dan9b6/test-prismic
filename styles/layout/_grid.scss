@@ -1,0 +1,14 @@
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: $md) {
+  .grid {
+    &--2,
+    &--4,
+    &--6 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

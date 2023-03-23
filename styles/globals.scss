@@ -1,5 +1,12 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap");
+
+@import "./abstract/variables";
+@import "./abstract/typography";
+@import "./layout/general";
+@import "./layout/container";
+@import "./layout/grid";
+@import "./layout/header";
+@import "./layout/footer";
+@import "./components/section";
+@import "./components/hero";
+@import "./elements/button";

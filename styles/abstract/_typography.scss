@@ -1,0 +1,31 @@
+h1,
+.h1 {
+  font-weight: $font-heading-weight;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  line-height: 1.5;
+}
+
+h2,
+.h2 {
+  font-weight: $font-body-bold;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+h3,
+.h3 {
+  margin-bottom: 1.25rem;
+}
+
+h4,
+.h4,
+h5,
+.h5 {
+  margin-bottom: 1.1rem;
+}
+
+p,
+li {
+  margin-bottom: 1rem;
+}
