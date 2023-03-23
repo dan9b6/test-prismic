@@ -35,7 +35,7 @@ interface HomepageDocumentData {
  * Slice for *Homepage → Slice Zone*
  *
  */
-type HomepageDocumentDataSlicesSlice = HeroSliceSlice | ImageGridSlice | GridSliceSlice;
+type HomepageDocumentDataSlicesSlice = HeroSliceSlice | ImageGridSlice | GridSliceSlice | ProjectListSliceSlice;
 /**
  * Homepage document from Prismic
  *
@@ -99,6 +99,17 @@ interface ProjectsDocumentData {
      *
      */
     title: prismicT.KeyTextField;
+    /**
+     * Pane Image field in *Projects*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: projects.pane_image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    pane_image: prismicT.ImageField<never>;
     /**
      * Slice Zone field in *Projects*
      *
@@ -173,6 +184,16 @@ interface GridSliceSliceDefaultPrimary {
      *
      */
     grey_background: prismicT.BooleanField;
+    /**
+     * Columns field in *GridSlice → Primary*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: grid_slice.primary.columns
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    columns: prismicT.NumberField;
 }
 /**
  * Item in GridSlice → Items
@@ -403,11 +424,60 @@ type ImageGridSliceVariation = ImageGridSliceDefault;
  *
  */
 export type ImageGridSlice = prismicT.SharedSlice<"image_grid", ImageGridSliceVariation>;
+/**
+ * Primary content in ProjectListSlice → Primary
+ *
+ */
+interface ProjectListSliceSliceDefaultPrimary {
+    /**
+     * Title field in *ProjectListSlice → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: project_list_slice.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *ProjectListSlice → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: project_list_slice.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+}
+/**
+ * Default variation for ProjectListSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `ProjectListSlice`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProjectListSliceSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ProjectListSliceSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *ProjectListSlice*
+ *
+ */
+type ProjectListSliceSliceVariation = ProjectListSliceSliceDefault;
+/**
+ * ProjectListSlice Shared Slice
+ *
+ * - **API ID**: `project_list_slice`
+ * - **Description**: `ProjectListSlice`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProjectListSliceSlice = prismicT.SharedSlice<"project_list_slice", ProjectListSliceSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProjectsDocumentData, ProjectsDocumentDataSlicesSlice, ProjectsDocument, AllDocumentTypes, GridSliceSliceDefaultPrimary, GridSliceSliceDefaultItem, GridSliceSliceDefault, GridSliceSliceVariation, GridSliceSlice, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefaultItem, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, ImageGridSliceDefaultPrimary, ImageGridSliceDefaultItem, ImageGridSliceDefault, ImageGridSliceVariation, ImageGridSlice };
+        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProjectsDocumentData, ProjectsDocumentDataSlicesSlice, ProjectsDocument, AllDocumentTypes, GridSliceSliceDefaultPrimary, GridSliceSliceDefaultItem, GridSliceSliceDefault, GridSliceSliceVariation, GridSliceSlice, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefaultItem, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, ImageGridSliceDefaultPrimary, ImageGridSliceDefaultItem, ImageGridSliceDefault, ImageGridSliceVariation, ImageGridSlice, ProjectListSliceSliceDefaultPrimary, ProjectListSliceSliceDefault, ProjectListSliceSliceVariation, ProjectListSliceSlice };
     }
 }

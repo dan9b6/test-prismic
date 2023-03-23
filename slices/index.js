@@ -3,15 +3,18 @@
 import GridSlice from './GridSlice';
 import HeroSlice from './HeroSlice';
 import ImageGrid from './ImageGrid';
+import ProjectListSlice from './ProjectListSlice';
 
 export {
 	GridSlice,
 	HeroSlice,
 	ImageGrid,
+	ProjectListSlice,
 };
 
 export const components = {
 	grid_slice: GridSlice,
 	hero_slice: HeroSlice,
 	image_grid: ImageGrid,
+	project_list_slice: ProjectListSlice,
 };

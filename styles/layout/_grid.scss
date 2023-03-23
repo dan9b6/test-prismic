@@ -12,3 +12,24 @@
     }
   }
 }
+
+@media (min-width: $lg) {
+  .grid {
+    &--4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    &--3,
+    &--6 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media (min-width: $xl) {
+  .grid {
+    &--6 {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+}

@@ -33,6 +33,11 @@
       "grey_background": {
         "__TYPE__": "BooleanContent",
         "value": true
+      },
+      "columns": {
+        "__TYPE__": "FieldContent",
+        "value": "74",
+        "type": "Number"
       }
     },
     "items": [

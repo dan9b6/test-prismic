@@ -48,6 +48,13 @@
             "placeholder_true": "true",
             "placeholder_false": "false"
           }
+        },
+        "columns": {
+          "type": "Number",
+          "config": {
+            "label": "Columns",
+            "placeholder": ""
+          }
         }
       },
       "items": {

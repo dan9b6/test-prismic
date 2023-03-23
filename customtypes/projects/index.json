@@ -19,6 +19,14 @@
           "placeholder": ""
         }
       },
+      "pane_image": {
+        "type": "Image",
+        "config": {
+          "label": "Pane Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
