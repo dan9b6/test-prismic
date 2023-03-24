@@ -3,8 +3,20 @@
   display: inline-block;
   margin-bottom: 0.5rem;
   background-color: $c-purple;
-  border-radius: 8px;
+  border-radius: $border-radius;
   color: $c-white;
   text-decoration: none;
   text-transform: uppercase;
+  transition: background-color 0.25s;
+
+  &:hover {
+    background-color: $c-blue;
+  }
+
+  &:focus,
+  &:active {
+    box-shadow: none;
+    outline: none;
+    background-color: $c-dark-blue;
+  }
 }

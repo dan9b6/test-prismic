@@ -1,24 +1,24 @@
 {
   "name": {
     "__TYPE__": "FieldContent",
-    "value": "fifth",
+    "value": "free",
     "type": "Text"
   },
   "uid": {
     "__TYPE__": "UIDContent",
-    "value": "stopped"
+    "value": "chief"
   },
   "logo": {
     "__TYPE__": "ImageContent",
     "origin": {
       "id": "main",
-      "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
-      "width": 4016,
-      "height": 6016
+      "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88",
+      "width": 3168,
+      "height": 4752
     },
-    "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
-    "width": 4016,
-    "height": 6016,
+    "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88",
+    "width": 3168,
+    "height": 4752,
     "edit": {
       "zoom": 1,
       "crop": {
@@ -29,16 +29,23 @@
     },
     "thumbnails": {}
   },
-  "cta_name": {
+  "cta_link": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "ExternalLink",
+      "url": "http://google.com"
+    }
+  },
+  "cta_text": {
     "__TYPE__": "FieldContent",
-    "value": "wheel",
+    "value": "act",
     "type": "Text"
   },
   "slices": {
     "__TYPE__": "SliceContentType",
     "value": [
       {
-        "key": "navigation_item$2eb87ee8-024a-4976-9678-34f454cbfb5b",
+        "key": "navigation_item$872ab223-fce8-46e0-9119-278aba1690fa",
         "name": "navigation_item",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -46,14 +53,14 @@
           "primary": {
             "name": {
               "__TYPE__": "FieldContent",
-              "value": "fell",
+              "value": "forty",
               "type": "Text"
             },
             "link": {
               "__TYPE__": "LinkContent",
               "value": {
                 "__TYPE__": "ExternalLink",
-                "url": "http://google.com"
+                "url": "http://twitter.com"
               }
             }
           },
@@ -65,7 +72,7 @@
                   "child_name",
                   {
                     "__TYPE__": "FieldContent",
-                    "value": "cat",
+                    "value": "pleasure",
                     "type": "Text"
                   }
                 ],
@@ -75,7 +82,7 @@
                     "__TYPE__": "LinkContent",
                     "value": {
                       "__TYPE__": "ExternalLink",
-                      "url": "https://prismic.io"
+                      "url": "https://slicemachine.dev"
                     }
                   }
                 ]

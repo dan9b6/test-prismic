@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { PrismicRichText } from "@prismicio/react";
 import { createClient } from "../../prismicio";
 import { PrismicNextImage } from "@prismicio/next";
+import Link from "next/link";
 
 /**
  * @typedef {import("@prismicio/client").Content.ProjectListSliceSlice} ProjectListSliceSlice
@@ -15,34 +16,31 @@ const ProjectListSlice = ({ slice }) => {
 
   useEffect(() => {
     documents.then((data) => setProjects(data));
-    console.log(projects);
-    console.log(projects);
   }, []);
 
   return (
     <section className="section">
       <div className="container">
         <span className="title">
-          {slice.primary.title ? (
+          {slice.primary.title && (
             <PrismicRichText field={slice.primary.title} />
-          ) : (
-            <h2>Template slice, update me!</h2>
           )}
         </span>
-        {slice.primary.description ? (
+        {slice.primary.description && (
           <PrismicRichText field={slice.primary.description} />
-        ) : (
-          <p>start by editing this slice from inside Slice Machine!</p>
         )}
         <div className="project-pane-grid">
           {projects.map((project, index) => (
-            <div className="project-pane" key={index}>
-              <PrismicNextImage field={project.data.pane_image} />
+            <Link href="/" className="project-pane" key={index}>
+              <PrismicNextImage
+                field={project.data.pane_image}
+                className="project-pane-img"
+              />
               <div className="project-pane-text">
-                <h3>{project.data.title}</h3>
-                <h4>Web project</h4>
+                <h3>{project.data.name}</h3>
+                <h4>{project.data.type}</h4>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

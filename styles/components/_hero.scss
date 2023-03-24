@@ -3,11 +3,13 @@
   color: $c-white;
   padding: 8rem 0 5rem;
   text-align: center;
+  border-bottom: 4px solid $c-blue;
 
   em {
     padding: 0.5rem 0.75rem;
     background-color: $c-blue;
     font-style: normal;
+    border-radius: $border-radius;
   }
 
   .grid {

@@ -1,22 +1,50 @@
 .project-pane {
   min-height: 20rem;
   background-color: $c-purple;
+  border-radius: $border-radius $border-radius $border-radius 0;
+  position: relative;
+  color: $c-black;
+  border: 3px solid $c-dark-blue;
+  overflow: hidden;
 
   &-grid {
     display: grid;
+    gap: 1rem;
   }
 
   &-text {
-    background-color: $c-white;
+    background-color: $c-blue;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-radius: 0 $border-radius 0 0;
+    min-width: 250px;
 
     h3 {
       margin-bottom: 0;
       padding: 0.5rem;
+      color: $c-white;
     }
 
     h4 {
       margin-bottom: 0;
       padding: 0.5rem;
+      background-color: $c-white;
+    }
+  }
+
+  &-img {
+    transition: 0.5s;
+    transform: scale(1);
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    .project-pane {
+      &-img {
+        transform: scale(1.15);
+      }
     }
   }
 }

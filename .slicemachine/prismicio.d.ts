@@ -71,16 +71,27 @@ interface NavigationDocumentData {
      */
     logo: prismicT.ImageField<never>;
     /**
-     * CTA Name field in *Navigation*
+     * CTA Link field in *Navigation*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.cta_link
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    cta_link: prismicT.LinkField;
+    /**
+     * CTA Text field in *Navigation*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: navigation.cta_name
+     * - **API ID Path**: navigation.cta_text
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    cta_name: prismicT.KeyTextField;
+    cta_text: prismicT.KeyTextField;
     /**
      * Slice Zone field in *Navigation*
      *
@@ -163,16 +174,38 @@ export type PageDocument<Lang extends string = string> = prismicT.PrismicDocumen
 /** Content for Projects documents */
 interface ProjectsDocumentData {
     /**
-     * Title field in *Projects*
+     * Name field in *Projects*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: projects.title
+     * - **API ID Path**: projects.name
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    title: prismicT.KeyTextField;
+    name: prismicT.KeyTextField;
+    /**
+     * Description field in *Projects*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: projects.description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
+    /**
+     * Type field in *Projects*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **API ID Path**: projects.type
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    type: prismicT.SelectField<"Website" | "SEO" | "App" | "Redesign">;
     /**
      * Pane Image field in *Projects*
      *
@@ -184,6 +217,28 @@ interface ProjectsDocumentData {
      *
      */
     pane_image: prismicT.ImageField<never>;
+    /**
+     * Desktop Image field in *Projects*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: projects.desktop_image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    desktop_image: prismicT.ImageField<never>;
+    /**
+     * Mobile Image field in *Projects*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: projects.mobile_image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    mobile_image: prismicT.ImageField<never>;
     /**
      * Slice Zone field in *Projects*
      *
@@ -230,13 +285,13 @@ interface GridSliceSliceDefaultPrimary {
     /**
      * Description field in *GridSlice → Primary*
      *
-     * - **Field Type**: Rich Text
+     * - **Field Type**: Title
      * - **Placeholder**: A nice description of your feature
      * - **API ID Path**: grid_slice.primary.description
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    description: prismicT.RichTextField;
+    description: prismicT.TitleField;
     /**
      * Grid Type field in *GridSlice → Primary*
      *
@@ -490,13 +545,13 @@ interface ProjectListSliceSliceDefaultPrimary {
     /**
      * Description field in *ProjectListSlice → Primary*
      *
-     * - **Field Type**: Rich Text
+     * - **Field Type**: Title
      * - **Placeholder**: A nice description of your feature
      * - **API ID Path**: project_list_slice.primary.description
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    description: prismicT.RichTextField;
+    description: prismicT.TitleField;
 }
 /**
  * Default variation for ProjectListSlice Slice
@@ -521,11 +576,107 @@ type ProjectListSliceSliceVariation = ProjectListSliceSliceDefault;
  *
  */
 export type ProjectListSliceSlice = prismicT.SharedSlice<"project_list_slice", ProjectListSliceSliceVariation>;
+/**
+ * Primary content in SectionSlice → Primary
+ *
+ */
+interface SectionSliceSliceDefaultPrimary {
+    /**
+     * Title field in *SectionSlice → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: section_slice.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *SectionSlice → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: section_slice.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.TitleField;
+    /**
+     * Type field in *SectionSlice → Primary*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **API ID Path**: section_slice.primary.type
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    type: prismicT.SelectField<"Image Right" | "Image Left" | "Centred" | "Multi Image Centred">;
+    /**
+     * Background Image field in *SectionSlice → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: section_slice.primary.background_image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    background_image: prismicT.ImageField<never>;
+    /**
+     * Grey Background field in *SectionSlice → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: section_slice.primary.grey_background
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    grey_background: prismicT.BooleanField;
+}
+/**
+ * Item in SectionSlice → Items
+ *
+ */
+export interface SectionSliceSliceDefaultItem {
+    /**
+     * Image field in *SectionSlice → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: section_slice.items[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+}
+/**
+ * Default variation for SectionSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `SectionSlice`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SectionSliceSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<SectionSliceSliceDefaultPrimary>, Simplify<SectionSliceSliceDefaultItem>>;
+/**
+ * Slice variation for *SectionSlice*
+ *
+ */
+type SectionSliceSliceVariation = SectionSliceSliceDefault;
+/**
+ * SectionSlice Shared Slice
+ *
+ * - **API ID**: `section_slice`
+ * - **Description**: `SectionSlice`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type SectionSliceSlice = prismicT.SharedSlice<"section_slice", SectionSliceSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProjectsDocumentData, ProjectsDocumentDataSlicesSlice, ProjectsDocument, AllDocumentTypes, GridSliceSliceDefaultPrimary, GridSliceSliceDefaultItem, GridSliceSliceDefault, GridSliceSliceVariation, GridSliceSlice, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice, ProjectListSliceSliceDefaultPrimary, ProjectListSliceSliceDefault, ProjectListSliceSliceVariation, ProjectListSliceSlice };
+        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProjectsDocumentData, ProjectsDocumentDataSlicesSlice, ProjectsDocument, AllDocumentTypes, GridSliceSliceDefaultPrimary, GridSliceSliceDefaultItem, GridSliceSliceDefault, GridSliceSliceVariation, GridSliceSlice, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice, ProjectListSliceSliceDefaultPrimary, ProjectListSliceSliceDefault, ProjectListSliceSliceVariation, ProjectListSliceSlice, SectionSliceSliceDefaultPrimary, SectionSliceSliceDefaultItem, SectionSliceSliceDefault, SectionSliceSliceVariation, SectionSliceSlice };
     }
 }

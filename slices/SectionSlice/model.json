@@ -1,15 +1,15 @@
 {
-  "id": "grid_slice",
+  "id": "section_slice",
   "type": "SharedSlice",
-  "name": "GridSlice",
-  "description": "GridSlice",
+  "name": "SectionSlice",
+  "description": "SectionSlice",
   "variations": [
     {
       "id": "default",
       "name": "Default",
       "docURL": "...",
       "version": "sktwi1xtmkfgx8626",
-      "description": "GridSlice",
+      "description": "SectionSlice",
       "primary": {
         "title": {
           "type": "StructuredText",
@@ -29,16 +29,25 @@
             "single": "heading3"
           }
         },
-        "grid_type": {
+        "type": {
           "type": "Select",
           "config": {
-            "label": "Grid Type",
+            "label": "Type",
             "placeholder": "",
             "options": [
-              "Card",
-              "Image Only",
-              "Icon"
+              "Image Right",
+              "Image Left",
+              "Centred",
+              "Multi Image Centred"
             ]
+          }
+        },
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Background Image",
+            "constraint": {},
+            "thumbnails": []
           }
         },
         "grey_background": {
@@ -49,46 +58,15 @@
             "placeholder_true": "true",
             "placeholder_false": "false"
           }
-        },
-        "columns": {
-          "type": "Number",
-          "config": {
-            "label": "Columns",
-            "placeholder": ""
-          }
         }
       },
       "items": {
-        "richtext": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Rich Text",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
-        },
         "image": {
           "type": "Image",
           "config": {
             "label": "Image",
             "constraint": {},
             "thumbnails": []
-          }
-        },
-        "cta_link": {
-          "type": "Link",
-          "config": {
-            "label": "CTA Link",
-            "placeholder": "",
-            "select": "media"
-          }
-        },
-        "cta_text": {
-          "type": "Text",
-          "config": {
-            "label": "CTA Text",
-            "placeholder": ""
           }
         }
       },

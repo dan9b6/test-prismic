@@ -7,9 +7,9 @@
         "__TYPE__": "StructuredTextContent",
         "value": [
           {
-            "type": "heading1",
+            "type": "heading2",
             "content": {
-              "text": "Sides"
+              "text": "Complex"
             }
           }
         ]
@@ -18,9 +18,9 @@
         "__TYPE__": "StructuredTextContent",
         "value": [
           {
-            "type": "paragraph",
+            "type": "heading3",
             "content": {
-              "text": "Amet elit in labore ea. Eiusmod non et excepteur."
+              "text": "Society"
             }
           }
         ]

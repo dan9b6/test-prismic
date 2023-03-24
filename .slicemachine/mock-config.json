@@ -18,8 +18,17 @@
         "primary": {}
       }
     },
-    "ProjectListSlice": {},
+    "ProjectListSlice": {
+      "default": {
+        "primary": {}
+      }
+    },
     "NavigationItem": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "SectionSlice": {
       "default": {
         "primary": {}
       }

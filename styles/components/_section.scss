@@ -1,4 +1,8 @@
 .section {
   padding: 5rem 0;
   position: relative;
+
+  &--dark {
+    background-color: rgba(34, 42, 104, 0.1);
+  }
 }

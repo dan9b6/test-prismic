@@ -4,12 +4,14 @@ import GridSlice from './GridSlice';
 import HeroSlice from './HeroSlice';
 import NavigationItem from './NavigationItem';
 import ProjectListSlice from './ProjectListSlice';
+import SectionSlice from './SectionSlice';
 
 export {
 	GridSlice,
 	HeroSlice,
 	NavigationItem,
 	ProjectListSlice,
+	SectionSlice,
 };
 
 export const components = {
@@ -17,4 +19,5 @@ export const components = {
 	hero_slice: HeroSlice,
 	navigation_item: NavigationItem,
 	project_list_slice: ProjectListSlice,
+	section_slice: SectionSlice,
 };
