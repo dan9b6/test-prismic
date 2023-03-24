@@ -32,6 +32,11 @@
       "default": {
         "primary": {}
       }
+    },
+    "CarouselSlice": {
+      "default": {
+        "primary": {}
+      }
     }
   }
 }

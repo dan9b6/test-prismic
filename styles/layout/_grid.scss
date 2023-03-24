@@ -1,6 +1,10 @@
 .grid {
   display: grid;
   gap: 1rem;
+
+  &-item {
+    align-self: center;
+  }
 }
 
 @media (min-width: $md) {

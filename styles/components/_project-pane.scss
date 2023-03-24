@@ -49,7 +49,7 @@
   }
 }
 
-@media (min-width: $sm) {
+@media (min-width: $md) {
   .project-pane {
     &-grid {
       grid-template-columns: repeat(2, 1fr);

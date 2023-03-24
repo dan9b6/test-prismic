@@ -31,7 +31,6 @@
         "type": "Select"
       },
       "background_image": {
-        "__TYPE__": "ImageContent",
         "origin": {
           "id": "main",
           "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
@@ -49,9 +48,23 @@
           },
           "background": "transparent"
         },
+        "credits": null,
+        "alt": null,
+        "__TYPE__": "ImageContent",
         "thumbnails": {}
       },
-      "grey_background": {
+      "content": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Laboris deserunt ea in. Labore excepteur do non eu incididunt nulla fugiat sint occaecat. Velit elit et mollit culpa."
+            }
+          }
+        ]
+      },
+      "dark": {
         "__TYPE__": "BooleanContent",
         "value": true
       }
@@ -63,7 +76,6 @@
           [
             "image",
             {
-              "__TYPE__": "ImageContent",
               "origin": {
                 "id": "main",
                 "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
@@ -81,6 +93,9 @@
                 },
                 "background": "transparent"
               },
+              "credits": null,
+              "alt": null,
+              "__TYPE__": "ImageContent",
               "thumbnails": {}
             }
           ]

@@ -35,7 +35,7 @@ interface HomepageDocumentData {
  * Slice for *Homepage → Slice Zone*
  *
  */
-type HomepageDocumentDataSlicesSlice = HeroSliceSlice | GridSliceSlice | ProjectListSliceSlice;
+type HomepageDocumentDataSlicesSlice = HeroSliceSlice | GridSliceSlice | ProjectListSliceSlice | SectionSliceSlice;
 /**
  * Homepage document from Prismic
  *
@@ -268,6 +268,45 @@ type ProjectsDocumentDataSlicesSlice = GridSliceSlice | HeroSliceSlice;
 export type ProjectsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ProjectsDocumentData>, "projects", Lang>;
 export type AllDocumentTypes = HomepageDocument | NavigationDocument | PageDocument | ProjectsDocument;
 /**
+ * Primary content in CarouselSlice → Primary
+ *
+ */
+interface CarouselSliceSliceDefaultPrimary {
+    /**
+     * Title field in *CarouselSlice → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: carousel_slice.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+}
+/**
+ * Default variation for CarouselSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `CarouselSlice`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type CarouselSliceSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<CarouselSliceSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *CarouselSlice*
+ *
+ */
+type CarouselSliceSliceVariation = CarouselSliceSliceDefault;
+/**
+ * CarouselSlice Shared Slice
+ *
+ * - **API ID**: `carousel_slice`
+ * - **Description**: `CarouselSlice`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type CarouselSliceSlice = prismicT.SharedSlice<"carousel_slice", CarouselSliceSliceVariation>;
+/**
  * Primary content in GridSlice → Primary
  *
  */
@@ -323,6 +362,16 @@ interface GridSliceSliceDefaultPrimary {
      *
      */
     columns: prismicT.NumberField;
+    /**
+     * Background Image field in *GridSlice → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: grid_slice.primary.background_image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    background_image: prismicT.ImageField<never>;
 }
 /**
  * Item in GridSlice → Items
@@ -350,16 +399,6 @@ export interface GridSliceSliceDefaultItem {
      */
     image: prismicT.ImageField<never>;
     /**
-     * CTA Link field in *GridSlice → Items*
-     *
-     * - **Field Type**: Link to Media
-     * - **Placeholder**: *None*
-     * - **API ID Path**: grid_slice.items[].cta_link
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-    cta_link: prismicT.LinkToMediaField;
-    /**
      * CTA Text field in *GridSlice → Items*
      *
      * - **Field Type**: Text
@@ -369,6 +408,16 @@ export interface GridSliceSliceDefaultItem {
      *
      */
     cta_text: prismicT.KeyTextField;
+    /**
+     * CTA Link field in *GridSlice → Items*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: grid_slice.items[].cta_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    cta_link: prismicT.LinkField;
 }
 /**
  * Default variation for GridSlice Slice
@@ -622,16 +671,26 @@ interface SectionSliceSliceDefaultPrimary {
      */
     background_image: prismicT.ImageField<never>;
     /**
-     * Grey Background field in *SectionSlice → Primary*
+     * dark field in *SectionSlice → Primary*
      *
      * - **Field Type**: Boolean
      * - **Placeholder**: *None*
      * - **Default Value**: false
-     * - **API ID Path**: section_slice.primary.grey_background
+     * - **API ID Path**: section_slice.primary.dark
      * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
      *
      */
-    grey_background: prismicT.BooleanField;
+    dark: prismicT.BooleanField;
+    /**
+     * Content field in *SectionSlice → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: section_slice.primary.content
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    content: prismicT.RichTextField;
 }
 /**
  * Item in SectionSlice → Items
@@ -677,6 +736,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProjectsDocumentData, ProjectsDocumentDataSlicesSlice, ProjectsDocument, AllDocumentTypes, GridSliceSliceDefaultPrimary, GridSliceSliceDefaultItem, GridSliceSliceDefault, GridSliceSliceVariation, GridSliceSlice, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice, ProjectListSliceSliceDefaultPrimary, ProjectListSliceSliceDefault, ProjectListSliceSliceVariation, ProjectListSliceSlice, SectionSliceSliceDefaultPrimary, SectionSliceSliceDefaultItem, SectionSliceSliceDefault, SectionSliceSliceVariation, SectionSliceSlice };
+        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProjectsDocumentData, ProjectsDocumentDataSlicesSlice, ProjectsDocument, AllDocumentTypes, CarouselSliceSliceDefaultPrimary, CarouselSliceSliceDefault, CarouselSliceSliceVariation, CarouselSliceSlice, GridSliceSliceDefaultPrimary, GridSliceSliceDefaultItem, GridSliceSliceDefault, GridSliceSliceVariation, GridSliceSlice, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice, ProjectListSliceSliceDefaultPrimary, ProjectListSliceSliceDefault, ProjectListSliceSliceVariation, ProjectListSliceSlice, SectionSliceSliceDefaultPrimary, SectionSliceSliceDefaultItem, SectionSliceSliceDefault, SectionSliceSliceVariation, SectionSliceSlice };
     }
 }

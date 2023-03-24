@@ -50,13 +50,22 @@
             "thumbnails": []
           }
         },
-        "grey_background": {
+        "dark": {
           "type": "Boolean",
           "config": {
-            "label": "Grey Background",
-            "default_value": false,
+            "label": "dark",
+            "placeholder_false": "false",
             "placeholder_true": "true",
-            "placeholder_false": "false"
+            "default_value": false
+          }
+        },
+        "content": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Content",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         }
       },

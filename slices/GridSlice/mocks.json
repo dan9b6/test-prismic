@@ -38,6 +38,29 @@
         "__TYPE__": "FieldContent",
         "value": "58",
         "type": "Number"
+      },
+      "background_image": {
+        "origin": {
+          "id": "main",
+          "url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
+          "width": 5848,
+          "height": 3899
+        },
+        "url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
+        "width": 5848,
+        "height": 3899,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 0
+          },
+          "background": "transparent"
+        },
+        "credits": null,
+        "alt": null,
+        "__TYPE__": "ImageContent",
+        "thumbnails": {}
       }
     },
     "items": [
@@ -52,7 +75,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Pariatur anim officia consectetur aute. Ullamco proident aliquip magna qui incididunt pariatur dolor esse ad."
+                    "text": "Laborum ex sunt et labore."
                   }
                 }
               ]
@@ -89,12 +112,8 @@
             {
               "__TYPE__": "LinkContent",
               "value": {
-                "id": "mock_Media_link",
-                "kind": "image/jpeg",
-                "name": "mock_name",
-                "url": "https://source.unsplash.com/daily",
-                "size": "0",
-                "__TYPE__": "FileLink"
+                "__TYPE__": "ExternalLink",
+                "url": "http://twitter.com"
               }
             }
           ],
