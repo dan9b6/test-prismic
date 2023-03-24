@@ -2,19 +2,19 @@
 
 import GridSlice from './GridSlice';
 import HeroSlice from './HeroSlice';
-import ImageGrid from './ImageGrid';
+import NavigationItem from './NavigationItem';
 import ProjectListSlice from './ProjectListSlice';
 
 export {
 	GridSlice,
 	HeroSlice,
-	ImageGrid,
+	NavigationItem,
 	ProjectListSlice,
 };
 
 export const components = {
 	grid_slice: GridSlice,
 	hero_slice: HeroSlice,
-	image_grid: ImageGrid,
+	navigation_item: NavigationItem,
 	project_list_slice: ProjectListSlice,
 };

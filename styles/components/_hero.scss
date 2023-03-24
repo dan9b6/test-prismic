@@ -1,7 +1,18 @@
 .hero {
-  display: grid;
+  position: relative;
   color: $c-white;
-  background-color: $c-black;
+  padding: 8rem 0 5rem;
+  text-align: center;
+
+  em {
+    padding: 0.5rem 0.75rem;
+    background-color: $c-blue;
+    font-style: normal;
+  }
+
+  .grid {
+    min-height: 60vh;
+  }
 
   &-bg {
     position: absolute;
@@ -15,6 +26,8 @@
 
 @media (min-width: $md) {
   .hero {
+    text-align: start;
+
     .grid {
       gap: 2rem;
 

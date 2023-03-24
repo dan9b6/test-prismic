@@ -20,9 +20,6 @@
             "hero_slice": {
               "type": "SharedSlice"
             },
-            "image_grid": {
-              "type": "SharedSlice"
-            },
             "grid_slice": {
               "type": "SharedSlice"
             },

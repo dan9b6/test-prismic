@@ -19,15 +19,21 @@
           "placeholder": ""
         }
       },
+      "navigation_link": {
+        "type": "Boolean",
+        "config": {
+          "label": "Navigation Link",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
             "hero_slice": {
-              "type": "SharedSlice"
-            },
-            "image_grid": {
               "type": "SharedSlice"
             },
             "grid_slice": {

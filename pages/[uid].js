@@ -2,18 +2,28 @@ import * as prismicH from "@prismicio/helpers";
 import { SliceZone } from "@prismicio/react";
 import { createClient, linkResolver } from "../prismicio";
 import { components } from "@/slices/index";
+import { Navigation } from "@/components/Navigation";
 
 const Page = ({ page, navigation, settings }) => {
-  return <SliceZone slices={page.data.slices} components={components} />;
+  return (
+    <div>
+      <Navigation navigation={navigation} />
+      <SliceZone slices={page.data.slices} components={components} />
+    </div>
+  );
 };
 
 export default Page;
 
 export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });
-  const page = await client.getByUID("page", params.uid);
+  const [navigation, page] = await Promise.all([
+    client.getByUID("navigation", "header"),
+    client.getByUID("page", params.uid),
+  ]);
   return {
     props: {
+      navigation,
       page,
     },
   };

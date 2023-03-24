@@ -35,7 +35,7 @@ interface HomepageDocumentData {
  * Slice for *Homepage → Slice Zone*
  *
  */
-type HomepageDocumentDataSlicesSlice = HeroSliceSlice | ImageGridSlice | GridSliceSlice | ProjectListSliceSlice;
+type HomepageDocumentDataSlicesSlice = HeroSliceSlice | GridSliceSlice | ProjectListSliceSlice;
 /**
  * Homepage document from Prismic
  *
@@ -46,6 +46,68 @@ type HomepageDocumentDataSlicesSlice = HeroSliceSlice | ImageGridSlice | GridSli
  * @typeParam Lang - Language API ID of the document.
  */
 export type HomepageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<HomepageDocumentData>, "homepage", Lang>;
+/** Content for Navigation documents */
+interface NavigationDocumentData {
+    /**
+     * Name field in *Navigation*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.name
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * Logo field in *Navigation*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.logo
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    logo: prismicT.ImageField<never>;
+    /**
+     * CTA Name field in *Navigation*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.cta_name
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    cta_name: prismicT.KeyTextField;
+    /**
+     * Slice Zone field in *Navigation*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<NavigationDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Navigation → Slice Zone*
+ *
+ */
+type NavigationDocumentDataSlicesSlice = NavigationItemSlice;
+/**
+ * Navigation document from Prismic
+ *
+ * - **API ID**: `navigation`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<NavigationDocumentData>, "navigation", Lang>;
 /** Content for Page documents */
 interface PageDocumentData {
     /**
@@ -59,6 +121,18 @@ interface PageDocumentData {
      *
      */
     title: prismicT.KeyTextField;
+    /**
+     * Navigation Link field in *Page*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: page.navigation_link
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    navigation_link: prismicT.BooleanField;
     /**
      * Slice Zone field in *Page*
      *
@@ -75,7 +149,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSliceSlice | ImageGridSlice | GridSliceSlice;
+type PageDocumentDataSlicesSlice = HeroSliceSlice | GridSliceSlice;
 /**
  * Page document from Prismic
  *
@@ -126,7 +200,7 @@ interface ProjectsDocumentData {
  * Slice for *Projects → Slice Zone*
  *
  */
-type ProjectsDocumentDataSlicesSlice = GridSliceSlice | HeroSliceSlice | ImageGridSlice;
+type ProjectsDocumentDataSlicesSlice = GridSliceSlice | HeroSliceSlice;
 /**
  * Projects document from Prismic
  *
@@ -137,7 +211,7 @@ type ProjectsDocumentDataSlicesSlice = GridSliceSlice | HeroSliceSlice | ImageGr
  * @typeParam Lang - Language API ID of the document.
  */
 export type ProjectsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ProjectsDocumentData>, "projects", Lang>;
-export type AllDocumentTypes = HomepageDocument | PageDocument | ProjectsDocument;
+export type AllDocumentTypes = HomepageDocument | NavigationDocument | PageDocument | ProjectsDocument;
 /**
  * Primary content in GridSlice → Primary
  *
@@ -270,25 +344,15 @@ export type GridSliceSlice = prismicT.SharedSlice<"grid_slice", GridSliceSliceVa
  */
 interface HeroSliceSliceDefaultPrimary {
     /**
-     * Title field in *HeroSlice → Primary*
-     *
-     * - **Field Type**: Title
-     * - **Placeholder**: This is where it all begins...
-     * - **API ID Path**: hero_slice.primary.title
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    title: prismicT.TitleField;
-    /**
-     * Description field in *HeroSlice → Primary*
+     * Text field in *HeroSlice → Primary*
      *
      * - **Field Type**: Rich Text
-     * - **Placeholder**: A nice description of your feature
-     * - **API ID Path**: hero_slice.primary.description
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_slice.primary.text
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    description: prismicT.RichTextField;
+    text: prismicT.RichTextField;
     /**
      * Image field in *HeroSlice → Primary*
      *
@@ -311,32 +375,6 @@ interface HeroSliceSliceDefaultPrimary {
     background_image: prismicT.ImageField<never>;
 }
 /**
- * Item in HeroSlice → Items
- *
- */
-export interface HeroSliceSliceDefaultItem {
-    /**
-     * CTA Link field in *HeroSlice → Items*
-     *
-     * - **Field Type**: Link
-     * - **Placeholder**: *None*
-     * - **API ID Path**: hero_slice.items[].cta_link
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-    cta_link: prismicT.LinkField;
-    /**
-     * CTA Text field in *HeroSlice → Items*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: hero_slice.items[].cta_text
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    cta_text: prismicT.KeyTextField;
-}
-/**
  * Default variation for HeroSlice Slice
  *
  * - **API ID**: `default`
@@ -344,7 +382,7 @@ export interface HeroSliceSliceDefaultItem {
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type HeroSliceSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<HeroSliceSliceDefaultPrimary>, Simplify<HeroSliceSliceDefaultItem>>;
+export type HeroSliceSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<HeroSliceSliceDefaultPrimary>, never>;
 /**
  * Slice variation for *HeroSlice*
  *
@@ -360,70 +398,80 @@ type HeroSliceSliceVariation = HeroSliceSliceDefault;
  */
 export type HeroSliceSlice = prismicT.SharedSlice<"hero_slice", HeroSliceSliceVariation>;
 /**
- * Primary content in ImageGrid → Primary
+ * Primary content in NavigationItem → Primary
  *
  */
-interface ImageGridSliceDefaultPrimary {
+interface NavigationItemSliceDefaultPrimary {
     /**
-     * Title field in *ImageGrid → Primary*
+     * Name field in *NavigationItem → Primary*
      *
-     * - **Field Type**: Title
-     * - **Placeholder**: This is where it all begins...
-     * - **API ID Path**: image_grid.primary.title
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    title: prismicT.TitleField;
-    /**
-     * Description field in *ImageGrid → Primary*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: A nice description of your feature
-     * - **API ID Path**: image_grid.primary.description
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    description: prismicT.RichTextField;
-}
-/**
- * Item in ImageGrid → Items
- *
- */
-export interface ImageGridSliceDefaultItem {
-    /**
-     * Image field in *ImageGrid → Items*
-     *
-     * - **Field Type**: Image
+     * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: image_grid.items[].image
-     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     * - **API ID Path**: navigation_item.primary.name
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    image: prismicT.ImageField<never>;
+    name: prismicT.KeyTextField;
+    /**
+     * Link field in *NavigationItem → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation_item.primary.link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
 }
 /**
- * Default variation for ImageGrid Slice
+ * Item in NavigationItem → Items
+ *
+ */
+export interface NavigationItemSliceDefaultItem {
+    /**
+     * Child Name field in *NavigationItem → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation_item.items[].child_name
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    child_name: prismicT.KeyTextField;
+    /**
+     * Child Link field in *NavigationItem → Items*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation_item.items[].child_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    child_link: prismicT.LinkField;
+}
+/**
+ * Default variation for NavigationItem Slice
  *
  * - **API ID**: `default`
- * - **Description**: `ImageGrid`
+ * - **Description**: `NavigationItem`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type ImageGridSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ImageGridSliceDefaultPrimary>, Simplify<ImageGridSliceDefaultItem>>;
+export type NavigationItemSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<NavigationItemSliceDefaultPrimary>, Simplify<NavigationItemSliceDefaultItem>>;
 /**
- * Slice variation for *ImageGrid*
+ * Slice variation for *NavigationItem*
  *
  */
-type ImageGridSliceVariation = ImageGridSliceDefault;
+type NavigationItemSliceVariation = NavigationItemSliceDefault;
 /**
- * ImageGrid Shared Slice
+ * NavigationItem Shared Slice
  *
- * - **API ID**: `image_grid`
- * - **Description**: `ImageGrid`
+ * - **API ID**: `navigation_item`
+ * - **Description**: `NavigationItem`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type ImageGridSlice = prismicT.SharedSlice<"image_grid", ImageGridSliceVariation>;
+export type NavigationItemSlice = prismicT.SharedSlice<"navigation_item", NavigationItemSliceVariation>;
 /**
  * Primary content in ProjectListSlice → Primary
  *
@@ -478,6 +526,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProjectsDocumentData, ProjectsDocumentDataSlicesSlice, ProjectsDocument, AllDocumentTypes, GridSliceSliceDefaultPrimary, GridSliceSliceDefaultItem, GridSliceSliceDefault, GridSliceSliceVariation, GridSliceSlice, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefaultItem, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, ImageGridSliceDefaultPrimary, ImageGridSliceDefaultItem, ImageGridSliceDefault, ImageGridSliceVariation, ImageGridSlice, ProjectListSliceSliceDefaultPrimary, ProjectListSliceSliceDefault, ProjectListSliceSliceVariation, ProjectListSliceSlice };
+        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, ProjectsDocumentData, ProjectsDocumentDataSlicesSlice, ProjectsDocument, AllDocumentTypes, GridSliceSliceDefaultPrimary, GridSliceSliceDefaultItem, GridSliceSliceDefault, GridSliceSliceVariation, GridSliceSlice, HeroSliceSliceDefaultPrimary, HeroSliceSliceDefault, HeroSliceSliceVariation, HeroSliceSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice, ProjectListSliceSliceDefaultPrimary, ProjectListSliceSliceDefault, ProjectListSliceSliceVariation, ProjectListSliceSlice };
     }
 }

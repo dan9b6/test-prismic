@@ -2,17 +2,27 @@
   "_cts": {
     "homepage": {},
     "page": {},
-    "projects": {}
+    "projects": {},
+    "navigation": {}
   },
   "slices": {
-    "HeroSlice": {},
-    "ImageGrid": {},
+    "HeroSlice": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
     "GridSlice": {
       "default": {
         "items": {},
         "primary": {}
       }
     },
-    "ProjectListSlice": {}
+    "ProjectListSlice": {},
+    "NavigationItem": {
+      "default": {
+        "primary": {}
+      }
+    }
   }
 }
