@@ -29,10 +29,10 @@
             "single": "heading3"
           }
         },
-        "grid_type": {
+        "type": {
           "type": "Select",
           "config": {
-            "label": "Grid Type",
+            "label": "Type",
             "placeholder": "",
             "options": [
               "Card",

@@ -420,6 +420,13 @@ button {
   color: #fff;
 }
 
+.section--icons {
+  text-align: center;
+  color: #fff;
+  background: #5454d4;
+  background: linear-gradient(135deg, #5454d4 1%, #3b3b80 9%, #1e1e20 48%, #19191b 64%);
+}
+
 .section.active {
   opacity: 1;
 }
@@ -607,5 +614,29 @@ button {
 
 .card-footer {
   padding: 0.75rem;
+}
+
+.card-icon {
+  display: block;
+  text-align: center;
+  background-color: #222a68;
+  padding: 2rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.card-icon .card-img-top {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  min-height: unset;
+  max-height: unset;
+  margin: 0 auto;
+}
+
+.card-icon .card-content {
+  height: unset;
+  display: block;
 }
 /*# sourceMappingURL=globals.css.map */

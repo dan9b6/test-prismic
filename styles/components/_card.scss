@@ -1,3 +1,5 @@
+// Standard Card
+
 .card {
   display: flex;
   flex-direction: column;
@@ -24,5 +26,33 @@
 
   &-footer {
     padding: 0.75rem;
+  }
+}
+
+// Icon Card
+
+.card-icon {
+  display: block;
+  text-align: center;
+  background-color: $c-dark-blue;
+  padding: 2rem 1rem;
+  border-radius: $border-radius;
+  border: 2px solid $c-white;
+  color: $c-white;
+
+  .card {
+    &-img-top {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+      min-height: unset;
+      max-height: unset;
+      margin: 0 auto;
+    }
+
+    &-content {
+      height: unset;
+      display: block;
+    }
   }
 }

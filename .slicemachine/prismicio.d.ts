@@ -332,15 +332,15 @@ interface GridSliceSliceDefaultPrimary {
      */
     description: prismicT.TitleField;
     /**
-     * Grid Type field in *GridSlice → Primary*
+     * Type field in *GridSlice → Primary*
      *
      * - **Field Type**: Select
      * - **Placeholder**: *None*
-     * - **API ID Path**: grid_slice.primary.grid_type
+     * - **API ID Path**: grid_slice.primary.type
      * - **Documentation**: https://prismic.io/docs/core-concepts/select
      *
      */
-    grid_type: prismicT.SelectField<"Card" | "Image Only" | "Icon">;
+    type: prismicT.SelectField<"Card" | "Image Only" | "Icon">;
     /**
      * Grey Background field in *GridSlice → Primary*
      *

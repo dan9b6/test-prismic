@@ -4,7 +4,8 @@ import Link from "next/link";
 import { PrismicProvider } from "@prismicio/react";
 import { PrismicPreview } from "@prismicio/next";
 import { linkResolver, repositoryName } from "../prismicio";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
@@ -12,7 +13,6 @@ export default function App({ Component, pageProps }) {
 
     let options = {
       rootMargin: "0px",
-      threshold: 0.05,
     };
 
     const intersectionObserver = new IntersectionObserver((entries) => {

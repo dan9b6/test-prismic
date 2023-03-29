@@ -30,18 +30,25 @@ const ProjectListSlice = ({ slice }) => {
           <PrismicRichText field={slice.primary.description} />
         )}
         <div className="project-pane-grid">
-          {projects.map((project, index) => (
-            <Link href="/" className="project-pane" key={index}>
-              <PrismicNextImage
-                field={project.data.pane_image}
-                className="project-pane-img"
-              />
-              <div className="project-pane-text">
-                <h3>{project.data.name}</h3>
-                <h4>{project.data.type}</h4>
-              </div>
-            </Link>
-          ))}
+          {projects.map((project, index) => {
+            console.log(project.slugs[0]);
+            return (
+              <Link
+                href={`/projects/${project.slugs[0]}`}
+                className="project-pane"
+                key={index}
+              >
+                <PrismicNextImage
+                  field={project.data.pane_image}
+                  className="project-pane-img"
+                />
+                <div className="project-pane-text">
+                  <h3>{project.data.name}</h3>
+                  <h4>{project.data.type}</h4>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
