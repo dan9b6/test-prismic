@@ -21,17 +21,12 @@ const ProjectListSlice = ({ slice }) => {
   return (
     <section className="section">
       <div className="container">
-        <span className="title">
-          {slice.primary.title && (
-            <PrismicRichText field={slice.primary.title} />
-          )}
-        </span>
+        {slice.primary.title && <PrismicRichText field={slice.primary.title} />}
         {slice.primary.description && (
           <PrismicRichText field={slice.primary.description} />
         )}
         <div className="project-pane-grid">
           {projects.map((project, index) => {
-            console.log(project.slugs[0]);
             return (
               <Link
                 href={`/projects/${project.slugs[0]}`}

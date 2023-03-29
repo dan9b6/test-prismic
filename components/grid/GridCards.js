@@ -1,6 +1,7 @@
 import RichText from "@/components/RichText";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicLink } from "@prismicio/react";
+import Grid from "./Grid";
 
 const GridCards = ({ slice }) => {
   return (
@@ -10,13 +11,7 @@ const GridCards = ({ slice }) => {
         {slice.primary.description && (
           <RichText field={slice.primary.description} />
         )}
-        <div
-          className={
-            slice.primary.columns
-              ? `grid grid--${slice.primary.columns}`
-              : `grid`
-          }
-        >
+        <Grid cols={slice.primary.columns}>
           {slice?.items?.map((item, i) => (
             <div className="card" key={i}>
               <PrismicNextImage field={item.image} className="card-img-top" />
@@ -32,7 +27,7 @@ const GridCards = ({ slice }) => {
               </div>
             </div>
           ))}
-        </div>
+        </Grid>
       </div>
     </section>
   );
