@@ -3,6 +3,7 @@ import { SliceZone } from "@prismicio/react";
 import { createClient, linkResolver } from "../../prismicio";
 import { components } from "@/slices/index";
 import { useEffect } from "react";
+import { Navigation } from "@/components/Navigation";
 
 const Project = ({ page, navigation, settings }) => {
   useEffect(() => {
@@ -30,16 +31,25 @@ const Project = ({ page, navigation, settings }) => {
 
     window.addEventListener("scroll", initAnimation(sections));
   }, []);
-  return <SliceZone slices={page.data.slices} components={components} />;
+  return (
+    <>
+      <Navigation navigation={navigation} />
+      <SliceZone slices={page.data.slices} components={components} />;
+    </>
+  );
 };
 
 export default Project;
 
 export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });
-  const page = await client.getByUID("projects", params.uid);
+  const [navigation, page] = await Promise.all([
+    client.getByUID("navigation", "header"),
+    client.getByUID("projects", params.uid),
+  ]);
   return {
     props: {
+      navigation,
       page,
     },
   };

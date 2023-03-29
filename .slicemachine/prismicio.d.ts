@@ -160,7 +160,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = HeroSliceSlice | GridSliceSlice;
+type PageDocumentDataSlicesSlice = HeroSliceSlice | GridSliceSlice | SectionSliceSlice;
 /**
  * Page document from Prismic
  *

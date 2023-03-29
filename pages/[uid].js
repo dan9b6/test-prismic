@@ -32,10 +32,10 @@ const Page = ({ page, navigation, settings }) => {
     window.addEventListener("scroll", initAnimation(sections));
   }, []);
   return (
-    <div>
+    <>
       <Navigation navigation={navigation} />
       <SliceZone slices={page.data.slices} components={components} />
-    </div>
+    </>
   );
 };
 
