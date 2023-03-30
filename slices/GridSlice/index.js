@@ -3,6 +3,7 @@ import RichText from "@/components/RichText";
 import { PrismicNextImage } from "@prismicio/next";
 import GridCards from "@/components/grid/GridCards";
 import GridIcons from "@/components/grid/GridIcons";
+import GridImageOnly from "@/components/grid/GridImageOnly";
 import { useState, useEffect } from "react";
 /**
  * @typedef {import("@prismicio/client").Content.GridSliceSlice} GridSliceSlice
@@ -15,7 +16,7 @@ const GridSlice = ({ slice }) => {
   function gridSwitch(type, slice) {
     switch (type) {
       case "Image Only":
-        return <GridIcons slice={slice} />;
+        return <GridImageOnly slice={slice} />;
       case "Icon":
         return <GridIcons slice={slice} />;
       default:

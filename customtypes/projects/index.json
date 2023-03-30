@@ -73,6 +73,9 @@
             },
             "hero_slice": {
               "type": "SharedSlice"
+            },
+            "section_slice": {
+              "type": "SharedSlice"
             }
           }
         }

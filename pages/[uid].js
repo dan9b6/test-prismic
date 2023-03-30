@@ -3,9 +3,12 @@ import { SliceZone } from "@prismicio/react";
 import { createClient, linkResolver } from "../prismicio";
 import { components } from "@/slices/index";
 import { Navigation } from "@/components/Navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const Page = ({ page, navigation, settings }) => {
+  const router = useRouter();
+
   useEffect(() => {
     let sections = document.querySelectorAll(".section");
 
@@ -30,7 +33,7 @@ const Page = ({ page, navigation, settings }) => {
     initAnimation(sections);
 
     window.addEventListener("scroll", initAnimation(sections));
-  }, []);
+  }, [router]);
   return (
     <>
       <Navigation navigation={navigation} />

@@ -41,6 +41,9 @@
             },
             "section_slice": {
               "type": "SharedSlice"
+            },
+            "project_list_slice": {
+              "type": "SharedSlice"
             }
           }
         }
